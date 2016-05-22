@@ -1,6 +1,6 @@
 {
   "name": "rieluz",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "description": "Just another OGM for OrientDB",
   "keywords": [
     "orientdb",
@@ -8,7 +8,6 @@
     "graph",
     "graphdb",
     "ogm"
-
   ],
   "repository": {
     "type": "git",
@@ -35,15 +34,20 @@
     "validate": "^3.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.5",
+    "babel-cli": "^6.9.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
-    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-register": "^6.7.2",
     "nodemon": "^1.9.1"
   },
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "directories": {
     "lib": "./lib"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "npm run clean && babel ./lib --presets babel-preset-es2015 --out-dir dist/",
+    "prepublish": "npm run build"
   }
 }
