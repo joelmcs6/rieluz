@@ -57,7 +57,7 @@ This is the way of boot connections to OrientDB database. If database is not cre
 ## Create a model schema
 Let's create a person model
 ```js
-import const rieluz from 'rieluz';
+import * as rieluz from 'rieluz';
 
 const personSchema = rieluz.Schema({
   id: {
@@ -72,9 +72,11 @@ const personSchema = rieluz.Schema({
   }
 });
 
-export default rieluz.Vertex('Person', personSchema);
+export default rieluz.Vertex('Person', personSchema, 'default');
 ```
 For the schema validation was used validate nodejs package. Read more about this in here...
+
+The third parameter is the connection that model will use. If it is not specified rieluz will take 'default'
 
 ## Make queries
 To be written...
