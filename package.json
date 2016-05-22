@@ -1,7 +1,7 @@
 {
   "name": "rieluz",
   "version": "0.1.0",
-  "description": "Just another OGM for OrientDD",
+  "description": "Just another OGM for OrientDB",
   "keywords": [
     "orientdb",
     "orientjs",
