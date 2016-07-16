@@ -136,10 +136,12 @@ let jimmy = Person.collection.upsert(data, (err, vertex) => {
 ### Link two nodes in the Graph
 
 createEdge takes 4 arguments: 
-1. label: The class of the edge
-2. from: RID of the FROM node
-3. to: RID of the TO node
-4. done: Error-based callback
+<ol>
+ <li>label: The class of the edge</li>
+ <li>from: RID of the FROM node</li>
+ <li>to: RID of the TO node</li>
+ <li>done: Error-based callback</li>
+</ol>
 ```js
 Person.collection.createEdge('friend_of', jimmy.rid, joe.rid, (err, edge) => {
     //Do something with the edge in here
