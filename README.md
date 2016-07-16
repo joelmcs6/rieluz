@@ -136,12 +136,11 @@ let jimmy = Person.collection.upsert(data, (err, vertex) => {
 ### Link two nodes in the Graph
 
 createEdge takes 4 arguments: 
-<ol>
- <li>label: The class of the edge</li>
- <li>from: RID of the FROM node</li>
- <li>to: RID of the TO node</li>
- <li>done: Error-based callback</li>
-</ol>
+* label: The class of the edge
+* from: RID of the FROM node
+* to: RID of the TO node
+* done: Error-based callback
+
 ```js
 Person.collection.createEdge('friend_of', jimmy.rid, joe.rid, (err, edge) => {
     //Do something with the edge in here
@@ -155,7 +154,12 @@ Person.collection.deleteEdge('friend_of', jimmy.rid, joe.rid, (err, count) => {
     //Do something with count of deleted edges
 });
 ```
-
+To remove all edges between one node and other, no matter its class, pass null or undefined as class parameter
+```js
+Person.collection.deleteEdge(null, jimmy.rid, joe.rid, (err, count) => {
+    //Do something with count of deleted edges
+});
+```
 ### Find a record
 
 ```js
