@@ -68,7 +68,7 @@ const personSchema = rieluz.Schema({
     type: 'string'
   },
   age: {
-    type: 'integer'
+    type: 'number'
   }
 });
 
