@@ -68,7 +68,7 @@ const personSchema = rieluz.Schema({
     type: 'string'
   },
   age: {
-    type: 'number'
+    type: 'integer'
   }
 });
 
@@ -77,6 +77,22 @@ export default rieluz.Vertex('Person', personSchema, 'default');
 For the schema validation was used validate node js package. [Read more](https://www.npmjs.com/package/validate)
 
 The third parameter is the connection that model will use. If it is not specified rieluz will take 'default'
+
+## Supported data types in **RIELUZ** and its map in Javascript
+| Rieluz Type (same as OrientDB)| Javascript|
+| ----------------------------- | --------- |
+| decimal                       | number    |
+| float                         | number    |
+| integer                       | number    |
+| double                        | number    |
+| short                         | number    |
+| date                          | object    |
+| datetime                      | object    |
+| string                        | string    |
+| boolean                       | boolean   |
+
+> **IMPORTANT**
+> The properties type must be declared as one of the types above
 
 ## Vertex Class
 
