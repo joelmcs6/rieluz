@@ -47,7 +47,7 @@ By every connection declared in configuration is set an instance of the GraphMan
 
 ## Connect the client
 ```js
-import const rieluz from 'rieluz';
+import * as rieluz from 'rieluz';
 
 rieluz.connect(config, (err) => done);
 
