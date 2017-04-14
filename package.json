@@ -1,6 +1,6 @@
 {
   "name": "rieluz",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Just another OGM for OrientDB",
   "keywords": [
     "orientdb",
@@ -30,7 +30,7 @@
     "config": "^1.20.1",
     "joi": "^8.0.5",
     "lodash": "^4.11.1",
-    "orientjs": "^2.1.11",
+    "orientjs": "^2.2.4",
     "validate": "^3.0.1"
   },
   "devDependencies": {
