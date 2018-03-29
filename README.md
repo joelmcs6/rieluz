@@ -37,7 +37,6 @@ orientdb: {
 }
 ```
 > **IMPORTANT**
-> Rieluz configuration must have the key "orientdb".
 > Every connection configuration is similar to the [OrientJS](https://github.com/orientechnologies/orientjs) configuration schema.
 
 Can be specify as many connection as needed. Every connection is identify by its name.
