@@ -1,0 +1,8 @@
+{
+  "comments": false,
+  "plugins": ["transform-runtime", "lodash"],
+  "presets": [
+    ["env", { "node": "8.10" }],
+    "stage-3"
+  ]
+}
