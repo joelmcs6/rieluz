@@ -1,6 +1,6 @@
 {
   "name": "rieluz",
-  "version": "0.1.14",
+  "version": "0.2.0",
   "description": "Just another OGM for OrientDB",
   "keywords": [
     "orientdb",
@@ -17,28 +17,41 @@
     "name": "Joel Macías Roque",
     "email": "joelmcs6@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Alberto Menendez Romero",
+      "email": "albertomr86@gmail.com",
+      "url": "https://github.com/albertomr86"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/joelmcs6/rieluz/issues"
   },
   "homepage": "https://github.com/joelmcs6/rieluz#readme",
   "engines": {
-    "node": "~5.6.0"
+    "node": ">=8.10"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.3",
-    "joi": "^8.0.5",
-    "lodash": "^4.11.1",
-    "orientjs": "^2.2.4",
-    "validate": "^3.0.1"
+    "async": "^2.6.0",
+    "joi": "^8.4.2",
+    "lodash": "^4.17.10",
+    "orientjs": "^2.2.10",
+    "validate": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-node5": "^1.2.0",
+    "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.7.2",
-    "nodemon": "^1.9.1"
+    "webpack": "^4.8.1"
   },
   "main": "./dist/index.js",
   "directories": {
