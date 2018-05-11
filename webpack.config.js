@@ -1,5 +1,3 @@
-'use strict';
-
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -18,11 +16,11 @@ module.exports = {
   performance: {
     hints: false
   },
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     library: 'rieluz',
-    libraryTarget: 'commonjs'
   },
   module: {
     rules: [
@@ -30,6 +28,12 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.join(__dirname, 'lib'),
+      },
+      {
+        test: /\.js$/,
+        loader: ['babel-loader', 'eslint-loader'],
+        include: path.join(__dirname, 'lib'),
+        exclude: /node_modules/,
       }
     ]
   },
