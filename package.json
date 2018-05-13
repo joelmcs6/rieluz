@@ -34,7 +34,6 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "async": "^2.6.0",
     "joi": "^8.4.2",
     "lodash-es": "^4.17.10",
     "orientjs": "^2.2.10",
