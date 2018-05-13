@@ -21,6 +21,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     library: 'rieluz',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
