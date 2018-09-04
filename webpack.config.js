@@ -29,20 +29,20 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: path.join(__dirname, 'lib'),
+        include: path.join(__dirname, 'lib')
       },
       {
         test: /\.js$/,
         loader: ['babel-loader', 'eslint-loader'],
         include: path.join(__dirname, 'lib'),
-        exclude: /node_modules/,
+        exclude: /node_modules/
       }
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new LodashModuleReplacementPlugin()
