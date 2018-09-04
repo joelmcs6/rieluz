@@ -1,0 +1,20 @@
+{
+  "extends": "strongloop",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "max-len": [2, 120, 8],
+    "semi": 2,
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "linebreak-style": ["error", "unix"],
+    "comma-dangle": ["error", "never"],
+    "brace-style": ["error", "stroustrup"]
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}

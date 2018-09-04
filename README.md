@@ -46,19 +46,19 @@ By every connection declared in configuration is set an instance of the GraphMan
 
 ## Connect the client
 ```js
-import * as rieluz from 'rieluz';
+import { connect } from 'rieluz';
 
-rieluz.connect(config, (err) => done);
-
+rieluz.connect(config)
+  .catch(e => console.error(`Error connecting to orientdb: ${e.message}`));
 ```
 This is the way of boot connections to OrientDB database. If database is not created, Rieluz will create the database and the declared models schema.
 
 ## Create a model schema
 Let's create a person model
 ```js
-import * as rieluz from 'rieluz';
+import { Schema, Vertex } from 'rieluz';
 
-const personSchema = rieluz.Schema({
+const personSchema = Schema({
   id: {
     type: 'string',
     index: 'UNIQUE_HASH_INDEX'
@@ -71,7 +71,7 @@ const personSchema = rieluz.Schema({
   }
 });
 
-export default rieluz.Vertex('Person', personSchema, 'default');
+export default Vertex('Person', personSchema, 'default');
 ```
 For the schema validation was used validate node js package. [Read more](https://www.npmjs.com/package/validate)
 
@@ -97,55 +97,40 @@ The third parameter is the connection that model will use. If it is not specifie
 
 ### Save a node in the Graph by instantiating of the model
 ```js
-let jimmy = new Person({id: "1", name: "Jimmy", age: 21});
-if (jimmy.isValid()){
-
-    jimmy.save((err, vertex) => {
-        if (err) {
-            console.log('Some error ocurred');
-            return;
-        }    
-        console.log('Node with name Jimmy was created!!')
-    });
+let jimmy = new Person({ id: "1", name: "Jimmy", age: 21 });
+if (jimmy.isValid()) {
+    jimmy.save()
+      .then(vertex => console.log(vertext))
+      .catch(e => console.error(`Error saving: ${e.message}`));
 } else {
     console.log(jimmy.schema.errors);
 }
 ```
+
 ### Delete a node
 ```js
-jimmy.delete((err, result) => {
-    if (err) {
-        console.log('Some error ocurred');
-        return;
-    }    
-    console.log('Node with name Jimmy was deleted!!')
-})
+jimmy.delete()
+  .then(result => console.log('Node removed'))
+  .catch(e => console.error(`Error removing node: ${e.message}`));
 ```
+
 ## Other way
 Every model have a property *collection* that can be used.
 ### Save a node in the Graph
 ```js
-let data = {id: "1", name: "Jimmy", age: 21}
-let jimmy = Person.collection.create(data, (err, vertex) => {
-   if (err) {
-       console.log('Some error ocurred');
-       return;
-   }    
-   console.log('Node with name Jimmy was created!!')
-});
+let data = { id: "1", name: "Jimmy", age: 21 };
+Person.collection.create(data)
+  .then(vertex => console.log(vertex))
+  .catch(e => console.error(`Error creating node: ${e.message}`));
 ```
 
 ### Upsert a node
 The node will be updated if it already exist in the database otherwise will be created
 ```js
-let data = {id: "1", name: "Jimmy", age: 21}
-let jimmy = Person.collection.upsert(data, (err, vertex) => {
-   if (err) {
-       console.log('Some error ocurred');
-       return;
-   }    
-   console.log('Everything goes well')
-});
+let data = { id: "1", name: "Jimmy", age: 21 };
+Person.collection.upsert(data)
+  .then(vertex => console.log(vertex))
+  .catch(e => console.error(`Error updating node: ${e.message}`));
 ```
 
 ### Link two nodes in the Graph
@@ -157,38 +142,38 @@ createEdge takes 4 arguments:
 * done: Error-based callback
 
 ```js
-Person.collection.createEdge('friend_of', jimmy.rid, joe.rid, (err, edge) => {
-    //Do something with the edge in here
-});
+Person.collection.createEdge('friend_of', jimmy.rid, joe.rid)
+  .then(edge => console.log(edge))
+  .catch(e => console.error(`Error creating relationship: ${e.message}`));
 ```
 
 ### Delete an edge
 
 ```js
-Person.collection.deleteEdge('friend_of', jimmy.rid, joe.rid, (err, count) => {
-    //Do something with count of deleted edges
-});
+Person.collection.deleteEdge('friend_of', jimmy.rid, joe.rid)
+  .then(count => console.log(`Total relationships removed: ${count}`))
+  .catch(e => console.error(`Error removing relationship: ${e.message}`));
 ```
 To remove all edges between one node and other, no matter its class, pass null or undefined as class parameter
 ```js
-Person.collection.deleteEdge(null, jimmy.rid, joe.rid, (err, count) => {
-    //Do something with count of deleted edges
-});
+Person.collection.deleteEdge(null, jimmy.rid, joe.rid)
+  .then(count => console.log(`All relationships removed: ${count}`))
+  .catch(e => console.error(`Error removing relationships: ${e.message}`));
 ```
 ### Find a record
 
 ```js
-Person.collection.findOne({id: "1"}, (err, vertex) => {
-    //vertex will be an instance of Person
-});
+Person.collection.findOne({ id: "1" })
+  .then(vertex => console.log(vertex))
+  .catch(e => console.error(`Error finding the node: ${e.message}`));
 ```
 
 ### Raw query
 
 ```js
-Person.collection.query("select from person where id = :id", {id: "1"}, (err, results) => {
-    // the results schema can change due to the fetch strategy
-});
+Person.collection.query("select from person where id = :id", { id: "1" })
+  .then(results => console.log(results))
+  .catch(e => console.error(`Error querying: ${e.message}`));
 ```
 
 

@@ -2,3 +2,8 @@ lib
 node_modules
 .idea
 .gitignore
+webpack.config.js
+README.md
+yarn.lock
+yarn-error.log
+.eslintrc.json
